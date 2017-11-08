@@ -1,4 +1,4 @@
-import { STATEMACHINE } from '../store/middleware/promise_middleware.js'
+import { STATEMACHINE } from '../store/myMiddleware.js'
 
 /**
  * this is for store ui state, it will change automatic after the async function

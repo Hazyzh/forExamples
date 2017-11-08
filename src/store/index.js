@@ -1,24 +1,23 @@
 import { applyMiddleware, createStore } from 'redux'
 import { createLogger } from 'redux-logger'
 
+import myMechinaMiddleware from './myMiddleware.js'
+
 const logger = createLogger({
 	diff: true,
 	collapsed: true
 })
 
-import promiseMiddleware from './middleware/promise_middleware'
-// promise middlerware
-const promiseWare = promiseMiddleware({
-	promiseTypeSuffixes: ['PENDING', 'FULFILLED', 'REJECTED'],
-	isOpenStateType: true
-})
+import promiseMiddleware from 'redux-promise-middleware'
+
 
 import rootReducer from '../reducers/index.js'
 
 let store = createStore(
 	rootReducer,
 	applyMiddleware(
-		promiseWare,
+		myMechinaMiddleware,
+		promiseMiddleware(),
 		logger
 	),
 )
